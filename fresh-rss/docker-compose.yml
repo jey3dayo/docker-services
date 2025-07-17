@@ -15,12 +15,3 @@ services:
     ports: [ "8081:80" ]
     restart: unless-stopped
 
-  # リバースプロキシ (HTTPS 自動更新)
-  caddy:
-    image: caddy:alpine
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./caddy_data:/data
-    ports: [ "80:80", "443:443" ]
-    restart: unless-stopped
-
