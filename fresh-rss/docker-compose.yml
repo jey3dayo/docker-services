@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  freshrss:
+    image: freshrss/freshrss:latest
+    environment:
+      TZ: Asia/Tokyo
+      CRON_MIN: '*/60' # 60 分間隔で更新
+    volumes:
+      - ./freshrss/data:/var/www/FreshRSS/data
+    ports: [ "8080:80" ]
+    restart: unless-stopped
+
+  rssbridge:
+    image: rssbridge/rss-bridge:latest
+    ports: [ "8081:80" ]
+    restart: unless-stopped
+
+  # リバースプロキシ (HTTPS 自動更新)
+  caddy:
+    image: caddy:alpine
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy_data:/data
+    ports: [ "80:80", "443:443" ]
+    restart: unless-stopped
+

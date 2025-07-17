@@ -1,0 +1,13 @@
+yourdomain.duckdns.org {
+    handle_path /freshrss* {
+        reverse_proxy freshrss:80
+    }
+    
+    handle_path /rssbridge* {
+        reverse_proxy rssbridge:80
+    }
+    
+    handle {
+        reverse_proxy freshrss:80
+    }
+}

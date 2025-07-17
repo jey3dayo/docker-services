@@ -1,0 +1,62 @@
+# Docker volumes
+data/
+logs/
+extensions/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Config files (if containing sensitive data)
+config/*.override.php
+config/user.custom.css
+config/user.custom.js
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+*.temp
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-*
+
+# Logs
+*.log
+error_log
+access_log
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Session data
+sessions/
+
+# Cache
+cache/
+tmp/
+
+# User uploads (if applicable)
+uploads/
+public/uploads/
+
+# Certificates
+*.pem
+*.key
+*.crt
+*.cer
+
+# Docker override files
+docker-compose.override.yml
+docker-compose.override.yaml
