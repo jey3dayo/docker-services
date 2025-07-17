@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.32.0 (765fde254)
+  labels:
+    io.kompose.service: airconnect
+  name: airconnect
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      io.kompose.service: airconnect
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.32.0 (765fde254)
+      labels:
+        io.kompose.network/airconnect-default: "true"
+        io.kompose.service: airconnect
+    spec:
+      containers:
+        - image: 1activegeek/airconnect:latest
+          name: airconnect
+          env:
+          - name: tz
+            value: Japan/Tokyo
+          securityContext:
+            privileged: true
+            procMount: Default
+      restartPolicy: Always
+      dnsPolicy: ClusterFirst
+      schedulerName: default-scheduler
+      securityContext: {}
+      hostNetwork: true
