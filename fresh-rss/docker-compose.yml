@@ -7,6 +7,7 @@ services:
       CRON_MIN: '*/60' # 60 分間隔で更新
     volumes:
       - ./freshrss/data:/var/www/FreshRSS/data
+      - ./freshrss/data/extensions:/var/www/FreshRSS/extensions
     ports: [ "8080:80" ]
     restart: unless-stopped
 
